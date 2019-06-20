@@ -1,3 +1,4 @@
+window.addEventListener("load", function () {
 var tmp = document.createElement("template");
 tmp.innerHTML = '<link rel="stylesheet" href="calendar.css">';
 
@@ -35,26 +36,21 @@ class MyCalendar extends HTMLElement {
 		this.tHead.appendChild(tControls);
 		tControls.classList.add("my-calendar__controls");
 
-		// var backBtnCell = tControls.insertCell(-1);
+		
 		var backBtn = document.createElement("button");
 		backBtn.innerHTML = "<";
 		tControls.appendChild(backBtn);
-		// backBtnCell.setAttribute("colspan", 2);
 		backBtn.addEventListener("click", this.moveBack.bind(this));
 
-		// var nowBtnCell = tControls.insertCell(-1);
 		var nowBtn = document.createElement("button");
 		nowBtn.innerHTML = "today";
 		tControls.appendChild(nowBtn);
-		// nowBtnCell.setAttribute("colspan", 3);
 		nowBtn.addEventListener("click", this.moveToday.bind(this));
 
 
-		// var forwardBtnCell = tControls.insertCell(-1);
 		var forwardBtn = document.createElement("button");
 		forwardBtn.innerHTML = ">";
 		tControls.appendChild(forwardBtn);
-		// forwardBtnCell.setAttribute("colspan", 2);
 		forwardBtn.addEventListener("click", this.moveForward.bind(this));
 	}
 
@@ -68,15 +64,10 @@ class MyCalendar extends HTMLElement {
 			}
 		}
 
-		// var week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-		// var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 		var tCaption = document.createElement("div");
 		this.tHead.appendChild(tCaption);
-		// var captionName = tCaption.insertCell(-1);
 		tCaption.innerHTML = months[date.getMonth()] + " " +
 			date.getFullYear();
-		// captionName.setAttribute("colspan", 7);
 		tCaption.classList.add("my-calendar__info");
 
 		var daysRow = document.createElement("div");
@@ -96,8 +87,6 @@ class MyCalendar extends HTMLElement {
 				numberOfCells += 7 - numberOfCells % 7;
 
 		for(var i = 1, day = 1; i <= numberOfCells; i++) {
-			// var sunday;
-			// (i % 7) == 0 ? sunday = true : sunday = false;
 
 			if(i % 7 == 1) {
 				var row = document.createElement("div");
@@ -118,56 +107,7 @@ class MyCalendar extends HTMLElement {
 		this.created = true;
 	}
 
-	// createCalendar(date) {
-	// 	if(this.created) {
-	// 		this.tHead.deleteRow(1);
-	// 		this.tHead.deleteRow(1);
-	// 		var tBodyLength = this.tBody.children.length;
-	// 		for (var i = 0; i < tBodyLength; i++) {
-	// 			this.tBody.deleteRow(0);
-	// 		}
-	// 	}
-
-	// 	// var week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-	// 	// var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-	// 	var tCaption = this.tHead.insertRow(-1);
-	// 	var captionName = tCaption.insertCell(-1);
-	// 	captionName.innerHTML = months[date.getMonth()] + " " +
-	// 		date.getFullYear();
-	// 	captionName.setAttribute("colspan", 7);
-	// 	captionName.classList.add("my-calendar__info");
-
-	// 	var daysRow = this.tHead.insertRow(-1);
-	// 	daysRow.classList.add("my-calendar__weekdays");
-	// 	for(var i = 0; i < 7; i++) {
-	// 		var cell = daysRow.insertCell(-1);
-	// 		cell.innerHTML = week[i];
-	// 	}
-
-	// 	var numberOfCells = 
-	// 		this.getFirstDay(date) + this.getCountDays(date);
-	// 	if(numberOfCells % 7 != 0)
-	// 			numberOfCells += 7 - numberOfCells % 7;
-
-	// 	for(var i = 1, day = 1; i <= numberOfCells; i++) {
-	// 		// var sunday;
-	// 		// (i % 7) == 0 ? sunday = true : sunday = false;
-
-	// 		if(i % 7 == 1) {
-	// 			var row = this.tBody.insertRow(-1);
-	// 		}
-
-	// 		var cell = row.insertCell(-1);
-
-	// 		if(i > this.getFirstDay(date) && day <= this.getCountDays(date)) {
-	// 			this.fillCell(cell, day++);
-	// 		}
-	// 	}
-
-	// 	this.created = true;
-	// }
-
+	
 	fillCell(cell, day) {
 		cell.classList.add("my-calendar__cell_day");
 
@@ -175,10 +115,6 @@ class MyCalendar extends HTMLElement {
 		dayContainer.classList.add("my-calendar__day-container");
 		var noteContainer = document.createElement("div");
 		noteContainer.classList.add("my-calendar__note-container");
-
-		// if(sunday) {
-		// 	cell.classList.add("sunday");
-		// }
 
 		if(this.calendarDate.getFullYear() == this.currentDate.getFullYear() && this.calendarDate.getMonth() == this.currentDate.getMonth() && this.currentDate.getDate() == day) {
 					dayContainer.classList.add("my-calendar__day-container_today");
@@ -244,47 +180,8 @@ class MyCalendar extends HTMLElement {
 		this.createCalendar(this.calendarDate);
 	}
 
-	// moveMonth() {
-	// 	var month = calendar.calendarDate.getMonth();
-
-	// 	if(this.innerHTML == "&gt;" ) {
-	// 		if(month < 11) {
-	// 			.calendarDate.setMonth(++month);
-	// 		} else {
-	// 			.calendarDate.setMonth(0);
-	// 			.calendarDate.setFullYear(.calendarDate.getFullYear() + 1);
-	// 		}
-	// 	}
-	// 	else if (.innerHTML == "today") {
-	// 		calendarDate = new Date();
-	// 	}
-	// 	else {
-	// 		if(month > 0) {
-	// 			.calendarDate.setMonth(--month);
-	// 		} else {
-	// 			.calendarDate.setMonth(11);
-	// 			.calendarDate.setFullYear(this.calendarDate.getFullYear() - 1);
-	// 		}
-	// 	}
-
-	// 	calendar.createCalendar(this.calendarDate);
-	// }
-
-	// showNotesWindow() {
-	// 	var notesWindow = 
-	// 		calendar.querySelector(".my-calendar__notes-window");
-	// 	notesWindow.classList.add("my-calendar__notes-window_active");
-	// }
-
-	// closeNotesWindow() {
-	// 	var notesWindow = 
-	// 		calendar.querySelector(".my-calendar__notes-window");
-	// 	notesWindow.classList.remove(
-	// 		"my-calendar__notes-window_active");
-	// }
 
 	closeNotesWindow() {
-		// calendar.removeChild(this.parentElement);
 		var notesWindowContainer = 
 			this.shadowRoot.querySelector(".my-calendar__notes-window-container");
 		this.shadowRoot.removeChild(notesWindowContainer);
@@ -359,3 +256,4 @@ class MyCalendar extends HTMLElement {
 
 window.customElements.define('my-calendar', MyCalendar);
 //console.log(document.createElement("my-calendar").constructor);
+});
