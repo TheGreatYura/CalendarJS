@@ -1,0 +1,158 @@
+* {
+	box-sizing: border-box;
+}
+
+button {
+	cursor: pointer;
+	outline: none;
+}
+
+:host(my-calendar) {
+	width: 100%;
+	height: 100%;
+}
+
+.my-calendar-container {
+	text-align: center;
+	width: 100%;
+	/*height: 100vh;*/
+	/*max-height: 100vh;*/
+	background: #F7F7FF;
+	font-size: 16px;
+	font-family: sans-serif;
+}
+
+.my-calendar__controls, .my-calendar__info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #2B59C3;
+	color: #fff;
+	border: none;
+	padding: 20px 0;
+}
+
+
+.my-calendar__controls button {
+	margin: 0 10px;
+	background: transparent;
+	border: none;
+	color: #fff;
+}
+
+.my-calendar__row {
+	display: flex;
+}
+
+
+.my-calendar__cell {
+	border: 1px solid #fff;
+	vertical-align: top;
+	height: 90px;
+	width: calc(100% / 7);
+	max-width: calc(100% / 7);
+	white-space: wrap;
+	text-align: left;
+	overflow: hidden;
+}
+
+.my-calendar__cell_day:hover {
+	background: #e7e7eF;
+	cursor: pointer;
+}
+
+.my-calendar__cell_weekday {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: auto;
+	padding: 20px 0;
+}
+
+
+.my-calendar__day-container {
+	padding: 10px;
+	text-align: right;
+	float: right;
+	border-radius: 50%;
+	margin-bottom: 5px;
+}
+
+
+/*.my-calendar__day-container::after {
+	content: "";
+	display: block;
+	clear: both;
+}*/
+
+.my-calendar__day-container_today {
+	background-color: #2B59C3;
+	color: #FFF;
+}
+
+.my-calendar__note-container {
+	clear: both;
+	background-color: rgba(43, 89, 195, 0.9);
+	color: #000;
+	width: 100%;
+	margin: auto;
+	padding: 5px;
+	overflow: hidden;
+	opacity: 0;
+}
+
+.my-calendar__note-container_active {
+	opacity: 1;
+}
+
+.my-calendar__notes-window-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, .5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.my-calendar__notes-window {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	border-radius: 6px;
+	background: white;
+}
+
+.my-calendar__notes-window button {
+	width: 80%;
+	padding: 10px;
+	border-radius: 5px;
+	-ms-grid-row-align: center;
+	    align-self: center;
+	background-color: #2B59C3;
+	color: #fff;
+	border: none;
+	margin-top: 10px;
+}
+
+.my-calendar__notes-window button:hover {
+	background-color: #2030d5;
+}
+
+.my-calendar__notes-info {
+	text-align: right;
+	padding-bottom: 5px;
+}
+
+.my-calendar__note-txt {
+	overflow: auto;
+	resize: none;
+	width: 300px;
+	height: 150px;
+}
+
+.my-calendar__note-txt:focus {
+	outline: none;
+}
+
